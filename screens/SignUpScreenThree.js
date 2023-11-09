@@ -17,7 +17,7 @@ import FormSubmitSuccessModal from '../components/FormSubmitSuccessModal';
 import {useContext} from 'react';
 import {SignUpContext} from '../providers/SignUpProvider';
 import {useIsFocused} from '@react-navigation/native';
-// import CheckBox from '@react-native-community/checkbox';
+import CheckBox from '@react-native-community/checkbox';
 import {FORM_INFOS} from '../utils/constants';
 import {validatePhonenumber} from '../utils/validation';
 
@@ -55,10 +55,10 @@ export default function SignUpScreenThree() {
     if (!validatePhonenumber(phoneNumber)) {
       return;
     }
-    // if (!acceptTC) {
-    //   Alert.alert('Please accept terms and condition to proceed');
-    //   return;
-    // }
+    if (!acceptTC) {
+      Alert.alert('Please accept terms and condition to proceed');
+      return;
+    }
     setModalVisible(true);
   }
 
@@ -131,7 +131,7 @@ export default function SignUpScreenThree() {
           </View>
 
  
-            {/* <View
+            <View
               style={{
                 flexDirection: 'row',
                 alignItems: 'center',
@@ -141,7 +141,7 @@ export default function SignUpScreenThree() {
               <Text onPress={() => setAcceptTC(p => !p)}>
                 Accept Terms and Conditions
               </Text>
-            </View> */}
+            </View>
        
           <View style={{paddingVertical: 20}}>
             <TouchableOpacity onPress={save}>
