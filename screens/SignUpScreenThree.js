@@ -9,19 +9,18 @@ import {
   Alert,
   TextInput,
 } from 'react-native';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import formStyles from '../styles/formStyles';
 import {useNavigation} from '@react-navigation/native';
-import {Dropdown} from 'react-native-element-dropdown';
-import FormSubmitSuccessModal from '../components/FormSubmitSuccessModal';
-import {useContext} from 'react';
-import {SignUpContext} from '../providers/SignUpProvider';
 import {useIsFocused} from '@react-navigation/native';
+import {Dropdown} from 'react-native-element-dropdown';
+import {SignUpContext} from '../providers/SignUpProvider';
 import CheckBox from '@react-native-community/checkbox';
+import FormSubmitSuccessModal from '../components/FormSubmitSuccessModal';
 import {FORM_INFOS} from '../utils/constants';
 import {validatePhonenumber} from '../utils/validation';
 
-const data = [
+const countryCodes = [
   {label: 'India (+91)', value: '+91'},
   {label: 'America (+1)', value: '+1'},
 ];
@@ -93,7 +92,7 @@ export default function SignUpScreenThree() {
               Country code <Text style={{color: 'red'}}>*</Text>
             </Text>
             <Dropdown
-              data={data}
+              data={countryCodes}
               search
               maxHeight={300}
               labelField="label"
@@ -130,19 +129,18 @@ export default function SignUpScreenThree() {
             ) : null}
           </View>
 
- 
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                paddingVertical: 10,
-              }}>
-              <CheckBox value={acceptTC} onValueChange={p => setAcceptTC(p)} />
-              <Text onPress={() => setAcceptTC(p => !p)}>
-                Accept Terms and Conditions
-              </Text>
-            </View>
-       
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              paddingVertical: 10,
+            }}>
+            <CheckBox value={acceptTC} onValueChange={p => setAcceptTC(p)} />
+            <Text onPress={() => setAcceptTC(p => !p)}>
+              Accept Terms and Conditions
+            </Text>
+          </View>
+
           <View style={{paddingVertical: 20}}>
             <TouchableOpacity onPress={save}>
               <Text style={[formStyles.btn, formStyles.saveBtnEnabled]}>

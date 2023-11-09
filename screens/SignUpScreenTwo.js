@@ -121,7 +121,7 @@ export default function SignUpScreenTwo() {
               style={formStyles.formInput}
               value={firstName}
               onChangeText={handleFirstnameChange}
-              placeholder="Enter firstName"
+              placeholder="Enter first name"
               onFocus={() => setShowFirstnameInfo(true)}
               onBlur={() => {
                 if (!firstName || validateFirstName(firstName)) {
@@ -141,7 +141,7 @@ export default function SignUpScreenTwo() {
               style={formStyles.formInput}
               value={lastName}
               onChangeText={handleLastnameChange}
-              placeholder="Enter lastName"
+              placeholder="Enter last name"
               onFocus={() => setShowLastnameInfo(true)}
               onBlur={() => {
                 if (!lastName || validateLastName(lastName)) {
